@@ -1,0 +1,167 @@
+<h2>Answer the following questions by choosing the correct option.</h2>
+<div id="riquestionbox" class="riitem clearfix">
+    <span id="riquestiontext" class="question-text">
+        The song "Uptown Funk" became a major hit, topping the charts in several countries. It was a collaboration between a famous artist known for his energetic performances and a producer who is also a well-known figure in the music industry. Who is the singer of the song "Uptown Funk"?
+    </span>
+</div>
+<table class="table riactivity" style="width:100%">
+    <tr>
+        <td class="td1">
+            <button id="rioption001" name="A" onclick="checkAnswer('A')">A. Bruno Mars</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="td2">
+            <button id="rioption002" name="B" onclick="checkAnswer('B')">B. Katy Perry</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="td3">
+            <button id="rioption003" name="C" onclick="checkAnswer('C')">C. Phil Collins</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="td4">
+            <button id="rioption004" name="D" onclick="checkAnswer('D')">D. Adele</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="td4">
+            <button id="rioption005" name="E" onclick="checkAnswer('E')">E. Adel</button>
+        </td>
+    </tr>
+</table>
+<div id="riquestionresponse" class="rihide"></div>
+<div id="riscorebox" class="rihide"></div>
+<button id="rinextquestion" class="rihide pull-right clearfix" onclick="nextQuestion()">Next Question</button>
+<button id="rireset" class="pull-right rihide clearfix" onclick="resetQuiz()">Re-start</button>
+
+<script>
+    let currentQuestion = 1;
+    let score = 0;
+
+    function checkAnswer(option) {
+        const correctAnswers = {
+            1: 'A', // Pertanyaan 1: Bruno Mars
+            2: 'C', // Pertanyaan 2: Michael Jackson
+            3: 'B', // Pertanyaan 3: Whitney Houston
+            4: 'A'  // Pertanyaan 4: Bujang Beji
+        };
+        const responseDiv = document.getElementById('riquestionresponse');
+        const scoreBox = document.getElementById('riscorebox');
+        
+        if (option === correctAnswers[currentQuestion]) {
+            responseDiv.textContent = 'Correct!';
+            score++;
+        } else {
+            responseDiv.textContent = 'Incorrect. ' 
+        }
+        
+        responseDiv.classList.remove('rihide');
+        document.getElementById('rinextquestion').classList.remove('rihide');
+        scoreBox.textContent = 'Current Score: ' + score + '/' + currentQuestion;
+        scoreBox.classList.remove('rihide');
+    }
+
+    function nextQuestion() {
+        currentQuestion++;
+        const questionText = document.getElementById('riquestiontext');
+        const options = document.querySelectorAll('.riactivity button');
+        const responseDiv = document.getElementById('riquestionresponse');
+        const scoreBox = document.getElementById('riscorebox');
+
+        if (currentQuestion === 2) {
+            questionText.textContent = 'Michael Jackson, often referred to as the "King of Pop", had an extraordinary career that spanned several decades. He was known for his unique style, impressive dance moves, and a long list of hits. Who is known as the "King of Pop"?';
+            options[0].textContent = 'A. Elvis Presley';
+            options[1].textContent = 'B. Prince';
+            options[2].textContent = 'C. Michael Jackson';
+            options[3].textContent = 'D. Stevie Wonder';
+            options[4].textContent = 'E. James Brown';
+        } else if (currentQuestion === 3) {
+            questionText.textContent = 'The song "I Will Always Love You" is one of the most iconic ballads of all time. It was performed by an artist who was known for her powerful voice and was a major figure in the music industry. Which singer is famous for the song "I Will Always Love You"?';
+            options[0].textContent = 'A. Mariah Carey';
+            options[1].textContent = 'B. Whitney Houston';
+            options[2].textContent = 'C. Celine Dion';
+            options[3].textContent = 'D. Adele';
+            options[4].textContent = 'E. Dolly Parton';
+        } else if (currentQuestion === 4) {
+            questionText.innerHTML = `
+                <h3>The story of Bujang Beji and Bukit Kelam</h3>
+                <p>Once upon a time, lived two men named Bujang Beji and Tumenggung Marubai, who were different from each other in character. Tumenggung Marubai was a humble, kind-hearted person. Bujang Beji was his opposite. He was greedy and arrogant. They made a living as fishermen, each having his own favorite spot for fishing. Tumenggung Marubai sourced his fish from Rimpang Melawi River, where fish could be found in abundance. As for Bujang Beji, he always fished in Simpang Kapuas River, where there was less fish. Therefore, it was no wonder that Tumenggung Marubai always brought home more fish than did Bujang Beji.</p>
+                <p>Tumenggung Marubai used a big trap called bubu to catch fish. After his bubu was filled with fish, he chose only the bigger ones and released the smaller ones back to the river. Thanks to his fishing wisdom, there were always plenty of fish in the river.</p>
+                <p>Realizing that he had never caught as many fish as Tumenggung Marubai did, Bujang Beji felt so envious that he thought of a way to beat him. An evil thought crossed his mind. He decided to catch fish using tuba, a fish poison extracted from derris root. He found it worked. Fish were easily caught, more and more fish every day. But there was a greater problem that he did not realize, it was that the fish were greatly reduced.</p>
+                <p>Based on the story, who was the greedy character?</p>
+            `;
+            options[0].textContent = 'A. Bujang Beji';
+            options[1].textContent = 'B. Tumenggung Marubai';
+            options[2].textContent = 'C. The fish';
+            options[3].textContent = 'D. The river';
+            options[4].textContent = 'E. The villagers';
+        } else {
+            // Jika pertanyaan habis, tampilkan hasil akhir
+            questionText.textContent = 'Quiz Completed! Your final score is ' + score + '/' + (currentQuestion - 1);
+            options.forEach(option => option.classList.add('rihide'));
+            document.getElementById('rinextquestion').classList.add('rihide');
+            scoreBox.classList.add('rihide');
+            document.getElementById('rireset').classList.remove('rihide');
+        }
+
+        responseDiv.classList.add('rihide');
+        document.getElementById('rinextquestion').classList.add('rihide');
+    }
+
+    function resetQuiz() {
+        currentQuestion = 1;
+        score = 0;
+        document.querySelectorAll('.riactivity button').forEach(option => option.classList.remove('rihide'));
+        document.getElementById('rireset').classList.add('rihide');
+        nextQuestion();
+    }
+</script>
+
+<style>
+    .rihide {
+        display: none;
+    }
+    .riitem {
+        margin-bottom: 20px;
+    }
+    .riactivity button {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .question-text {
+        display: block;
+        margin-bottom: 20px;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+    #riscorebox {
+        margin-top: 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    /* Media queries for smartphones */
+    @media only screen and (max-width: 600px) {
+        .question-text {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        .riactivity button {
+            padding: 8px;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        h2 {
+            font-size: 20px;
+        }
+        #riscorebox {
+            font-size: 16px;
+            margin-top: 8px;
+        }
+    }
+</style>
