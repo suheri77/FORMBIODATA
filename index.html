@@ -77,6 +77,14 @@
         <a href="https://docs.google.com/spreadsheets/d/1gKwTaanAsPim0nY6eD5avZ00ltHV2Rg5BK78_N4oi54/edit?gid=0#gid=0" class="btn btn-primary"target="_blank">VIEW DATA</a>
        <button class="btn btn-danger" type="reset">RESET FORM</button>
            </div>
+
+          <style>
+              .disabled-link {
+                  pointer-events: none;
+                  cursor: default;
+                  color: gray; /* Optional: To visually indicate it's disabled */
+              }
+          </style>
     <script>
     function UploadFile() {
     var reader = new FileReader();
