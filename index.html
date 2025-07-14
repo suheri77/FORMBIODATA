@@ -14,11 +14,11 @@
         </div>
 
     <div class="container">
-    <div class="title"style="text-align: center;">FORM BIODATA SMAN 1 PANGKALAN LESUNG</div>
+    <div class="title"style="text-align: center;">BIODATA KARTU PELAJAR</div>
     <div class="content">
     <div class="user-details">
         <div class="input-box">
-          <form id="uploadForm" action="https://script.google.com/macros/s/AKfycby2aMg_rIOO02e2DVsyAnJzESvL6Kurn-eGsTnVF9RbvVeQ35y6qpeL2Ss4f5Qxr8wV/exec" method="POST">
+          <form id="uploadForm" action="https://script.google.com/macros/s/AKfycbwtfLRbhs1i_nXsP520OcEX-6DejGQROkz2YRzKIB3dZnKtZOTmGcZMT60LpVuc4Evx/exec" method="POST">
           <input type="hidden" value="" name="fileContent" id="fileContent">
           <input type="hidden" value="" name="filename" id="filename">
           <div class="user-details">
@@ -46,20 +46,24 @@
             </div>
             
          <div class="input-box">
-            <label for="kelas" class="form-label">Kelompok MPLS</label>
+            <label for="kelas" class="form-label">Kelas</label>
               <select type="text" id="kelas" name="kelas" class="form-control" placeholder="Masukan kelas anda" required>
                 <option>--Pilih--</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                <option>X.1</option>
+                <option>X.2</option>
+                <option>X.3</option>
+                <option>X.4</option>
+                <option>X.5</option>
                 
             </select>
-
             </div>
 
         
+<div class="input-box">
+            <label for="ttl" class="form-label">tempat tanggal lahir</label>
+              <input type="text" id="ttl" name="ttl" class="form-control" placeholder="Masukan ttl anda" required>
+            </div>
+
 
         <div class="input-box">
             <label for="alamat" class="form-label">Alamat</label>
@@ -67,23 +71,27 @@
             </div>
         
 
-        <div class="input-box">
-            <label for="kontak" class="form-label">Kontak</label>
-              <input type="text" id="kontak" name="kontak" class="form-control" placeholder="Masukan nomor telepon anda " required>
-            </div> 
-            </form>
+      
 
 <div class="input-box">
-            <label for="file" class="form-label"> File (Foto Pribadi/Resmi/Bebas)</label>
+            <label for="file" class="form-label"> File (Foto)</label>
             <input required id="attach" name="attach" type="file"/>
             </div>
            
+<div class="button" style="width: 100%;">
+    <input type="button" id="submitButton" value="KIRIM DATA" onclick="handleClick();" />
+</div>
 
-        <div class="button"style="width: 100%;">
-            <input type="button" value="KIRIM DATA" onclick="UploadFile();" />
-            </div>
-            <div>
-        <div>
+<script>
+function handleClick() {
+    // Nonaktifkan tombol
+    document.getElementById('submitButton').disabled = true;
+    
+    // Panggil fungsi upload file
+    UploadFile();
+}
+</script>
+
               <a href="https://docs.google.com/spreadsheets/d/1sYuEPIuQjpStD3Emffn7jobLAjcsoMp85AtjU31RPBs/edit?gid=0#gid=0" 
                  class="btn btn-primary disabled-link" target="_blank">VIEW DATA</a>
               <button class="btn btn-danger" type="reset">RESET FORM</button>
